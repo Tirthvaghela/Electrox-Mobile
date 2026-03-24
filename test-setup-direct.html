@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Setup Account Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .link { color: blue; text-decoration: underline; cursor: pointer; }
+        .instructions { background: #f0f0f0; padding: 15px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>🧪 Setup Account Direct Test</h2>
+    
+    <div class="instructions">
+        <h3>Test Links:</h3>
+        <p><strong>Fresh Token:</strong></p>
+        <div class="link" onclick="openLink('http://localhost:8080/setup-account?token=386fd5df734ce8f33cc6f2249d4745d9ec67bc2e0eed9a5476f59c0720974adf')">
+            http://localhost:8080/setup-account?token=386fd5df734ce8f33cc6f2249d4745d9ec67bc2e0eed9a5476f59c0720974adf
+        </div>
+        
+        <p><strong>Alternative Test:</strong></p>
+        <div class="link" onclick="openLink('http://localhost:8080/#/setup-account?token=386fd5df734ce8f33cc6f2249d4745d9ec67bc2e0eed9a5476f59c0720974adf')">
+            http://localhost:8080/#/setup-account?token=386fd5df734ce8f33cc6f2249d4745d9ec67bc2e0eed9a5476f59c0720974adf
+        </div>
+        
+        <p><strong>Direct Login Test:</strong></p>
+        <div class="link" onclick="openLink('http://localhost:8080/')">
+            http://localhost:8080/ (Should show login, then redirect if URL detection works)
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>Expected Results:</h3>
+        <ul>
+            <li>✅ Should see Setup Account page with organization details</li>
+            <li>✅ Should show "Fresh Test Organization" details</li>
+            <li>✅ Should have password creation form</li>
+            <li>❌ Should NOT see blank screen</li>
+            <li>❌ Should NOT see login page</li>
+        </ul>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        function openLink(url) {
+            document.getElementById('result').innerHTML = '<p>Opening: ' + url + '</p>';
+            window.open(url, '_blank');
+        }
+        
+        // Auto-test the first link
+        setTimeout(() => {
+            openLink('http://localhost:8080/setup-account?token=386fd5df734ce8f33cc6f2249d4745d9ec67bc2e0eed9a5476f59c0720974adf');
+        }, 2000);
+    </script>
+</body>
+</html>
